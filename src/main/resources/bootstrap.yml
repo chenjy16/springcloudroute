@@ -1,0 +1,41 @@
+server:
+  port: 9050
+spring:
+  application:
+    name: meiduimall-router
+zuul:
+  ignoredServices: '*'
+  routes:
+    user-service:
+      path: /mall/mall_user_service/v1/**
+      serviceId: mall-user-service
+    commodity-service:
+      path: /mall/mall_commodity_service/v1/**
+      serviceId: mall-commodity-service
+    shoppingcart-service:
+      path: /mall/mall_shoppingcart_service/v1/**
+      serviceId: mall-shoppingcart-service
+    order-service:
+      path: /mall/mall_order_service/v1/**
+      serviceId: mall-order-service
+    config-refresh:
+      path: /bus/refresh/**
+      serviceId: service-config
+    ##会员系统用户服务
+    member-service:
+      path: /member/member_service/v1/**
+      serviceId: member-service
+    ##会员系统账户服务
+    account-servcie:
+      path: /member/account_service/v1/**
+      serviceId: account-service
+      stripPrefix: false
+    ##短信通知服务
+    short_msg_service:
+      path: /notify/short_msg_service/**
+      serviceId: short_msg_service
+      stripPrefix: false
+    ##短信服务
+    service-push:
+      path: /push/push-service/v1/**
+      serviceId: service-push

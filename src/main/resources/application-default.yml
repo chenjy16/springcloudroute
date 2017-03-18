@@ -1,0 +1,30 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.45.178.235:9001/eureka/
+    registry-fetch-interval-seconds: 10  
+    healthcheck:
+      enabled: true  
+  instance:
+    hostname: 10.45.178.235
+    lease-renewal-interval-in-seconds: 5      # 心跳时间，即服务续约间隔时间（缺省为30s）
+    lease-expiration-duration-in-seconds: 10  # 发呆时间，即服务续约到期时间（缺省为90s）    
+config:
+  jedis :  
+    jedisShardInfo :  
+      host : 10.45.178.235
+      port : 6379  
+      password : meiduiredis2017Md?!  
+    maxTotal: 1024  
+    maxIdle: 250  
+    maxWaitMillis : 2000 
+    testOnBorrow: true
+    testOnReturn: true
+hystrix:  
+  command:  
+    default:  
+      execution:  
+        isolation:  
+          thread:  
+            timeoutInMilliseconds: 10000 #缺省为1000   
+
